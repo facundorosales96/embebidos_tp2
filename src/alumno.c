@@ -30,6 +30,7 @@ SPDX-License-Identifier: MIT
 /* === Headers files inclusions =============================================================== */
 
 #include "alumno.h"
+#include <stdio.h>
 
 /* === Macros definitions ====================================================================== */
 
@@ -38,15 +39,51 @@ SPDX-License-Identifier: MIT
 /* === Private variable declarations =========================================================== */
 
 /* === Private function declarations =========================================================== */
+static int SerializarCadena();
+
+static int SerializarNumero();
 
 /* === Public variable definitions ============================================================= */
 
 /* === Private variable definitions ============================================================ */
 
 /* === Private function implementation ========================================================= */
+static int SerializarCadena(const char * campo, const char * valor, char * cadena, int espacio) {
+    return snprintf(cadena, espacio, "\"%s\":\"%s\",", campo, valor);
+}
 
+static int SerializarNumero(const char * campo, int valor, char * cadena, int espacio) {
+    return snprintf(cadena, espacio, "\"%s\":\"%d\",", campo, valor);
+}
 /* === Public function implementation ========================================================== */
+int Serializar(alumno_t alumno, char cadena[], uint32_t espacio) {
+    int disponibles = espacio;
+    int resultado;
 
+    cadena[0] = '{';
+    cadena++;
+    disponibles--;
+    resultado = SerializarCadena("apellido", alumno->apellido, cadena, disponibles);
+
+    if (resultado > 0) {
+        disponibles -= resultado;
+        cadena += resultado;
+        resultado = SerializarCadena("nombre", alumno->nombre, cadena, disponibles);
+    }
+
+    if (resultado > 0) {
+        disponibles -= resultado;
+        cadena += resultado;
+        resultado = SerializarNumero("documento", alumno->documento, cadena, disponibles);
+    }
+
+    if (resultado > 0) {
+        cadena += resultado;
+        *(cadena - 1) = '}';
+        resultado = espacio - disponibles;
+    }
+    return resultado;
+}
 /* === End of documentation ==================================================================== */
 
 /** @} End of module definition for doxygen */

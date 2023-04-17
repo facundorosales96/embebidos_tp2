@@ -10,6 +10,7 @@
         "editor.semanticHighlighting.enabled": true
     },
     "ceedlingExplorer.debugConfiguration": "Debug (Local)",
+    "python.formatting.provider": "none",
     "files.exclude": {
         "**/*.pyc": {
             "when": "$(basename).py"

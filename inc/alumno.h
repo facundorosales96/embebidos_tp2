@@ -19,8 +19,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 SPDX-License-Identifier: MIT
 *************************************************************************************************/
 
-#ifndef TEMPLATE_H
-#define TEMPLATE_H
+#ifndef ALUMNO_H
+#define ALUMNO_H
 
 /** \brief Brief description of the file
  **
@@ -39,13 +39,20 @@ extern "C" {
 #endif
 
 /* === Public macros definitions =============================================================== */
+#include <stdint.h>
+#define FIELD_SIZE 50
 
 /* === Public data type declarations =========================================================== */
+typedef struct alumno_s {
+    char apellido[FIELD_SIZE];
+    char nombre[FIELD_SIZE];
+    uint32_t documento;
+} const * alumno_t;
 
 /* === Public variable declarations ============================================================ */
 
 /* === Public function declarations ============================================================ */
-
+int Serializar(alumno_t alumno, char cadena[], uint32_t espacio);
 /* === End of documentation ==================================================================== */
 
 #ifdef __cplusplus
@@ -54,4 +61,4 @@ extern "C" {
 
 /** @} End of module definition for doxygen */
 
-#endif /* TEMPLATE_H */
+#endif /* ALUMNO_H */
