@@ -19,12 +19,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 SPDX-License-Identifier: MIT
 *************************************************************************************************/
 
-/** \brief Brief description of the file
- **
- ** Full file description
- **
- ** \addtogroup name Module denomination
- ** \brief Brief description of the module
+/** \brief Trabajo Practico N°2
+ ** \addtogroup tp2 TPN2
+ ** \brief Este programa toma los datos de un alumno y los muestra por consola en un formato Json
  ** @{ */
 
 /* === Headers files inclusions =============================================================== */
